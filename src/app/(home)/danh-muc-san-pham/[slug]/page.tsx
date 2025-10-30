@@ -37,7 +37,7 @@ const CategoryPage = () => {
       price: priceRange ? `${priceRange[0]}_${priceRange[1]}` : undefined,
       sort: sortType !== SortType.DEFAULT ? sortType : undefined,
     }),
-    [selectedColor, priceRange, sortType]
+    [selectedColor, priceRange, sortType],
   );
 
   const [pendingPriceRange, setPendingPriceRange] = useState<
@@ -58,7 +58,7 @@ const CategoryPage = () => {
       setSortType(value as SortType);
       setCurrentPage(1);
     },
-    [setSortType, setCurrentPage]
+    [setSortType, setCurrentPage],
   );
 
   const handleResetFilters = useCallback(() => {
@@ -101,7 +101,8 @@ const CategoryPage = () => {
   });
 
   const categoryName = categoryData?.data?.name || slug;
-  const searchItems = searchResult?.data?.items ?? [];
+  const searchItems =
+    searchResult?.data?.items.filter((p) => p.isActive === true) ?? [];
   const total = searchResult?.data?.totalItems || 0;
   const totalPages = searchResult?.data?.totalPages || 0;
 

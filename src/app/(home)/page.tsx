@@ -38,9 +38,9 @@ export default function Home() {
       <SectionTitle title="CÓ TOKYOLIFE TẾT AI CŨNG VUI!" />
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  gap-4 p-4">
         {productList.length > 0 &&
-          productList?.map((item) => (
-            <ProductItem key={item.slug} product={item} />
-          ))}
+          productList
+            ?.filter((p) => p.isActive === true)
+            .map((item) => <ProductItem key={item.slug} product={item} />)}
       </div>
     </div>
   );

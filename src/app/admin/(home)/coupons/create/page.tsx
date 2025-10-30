@@ -46,7 +46,7 @@ const createCouponSchema = z
   })
   .refine(
     (data) => (data.type === CouponType.PERCENTAGE ? data.value <= 100 : true),
-    { message: "Percentage cannot exceed 100%", path: ["value"] }
+    { message: "Percentage cannot exceed 100%", path: ["value"] },
   );
 
 type CreateCouponFormValues = z.infer<typeof createCouponSchema>;
@@ -237,6 +237,7 @@ const CouponCreatePage = () => {
       </div>
 
       <CustomButton
+        type="submit"
         disabled={isPending}
         className="mt-6 text-white rounded-2xl"
       >

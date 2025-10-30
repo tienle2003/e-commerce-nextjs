@@ -75,7 +75,7 @@ export const Header = () => {
       setSearchValue(e.target.value);
       debouncedSetKeyword(e.target.value);
     },
-    [debouncedSetKeyword]
+    [debouncedSetKeyword],
   );
 
   // Handler: focus search input
@@ -87,13 +87,14 @@ export const Header = () => {
     e.preventDefault();
     if (searchValue.trim()) {
       router.replace(
-        `/search?keyword=${encodeURIComponent(searchValue.trim())}`
+        `/search?keyword=${encodeURIComponent(searchValue.trim())}`,
       );
       setIsSearchActive(false);
     }
   };
   const cartCount = carts?.data?.items?.length ?? 0;
-  const searchItems = searchResult?.data?.items ?? [];
+  const searchItems =
+    searchResult?.data?.items.filter((p) => p.isActive === true) ?? [];
   const totalRemaining = (searchResult?.data?.totalItems ?? 0) - 5;
 
   return (
