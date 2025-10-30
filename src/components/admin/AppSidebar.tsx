@@ -78,43 +78,14 @@ const navItems: NavItem[] = [
   },
 ];
 
-const othersItems: NavItem[] = [
-  // {
-  //   icon: <PieChartIcon />,
-  //   name: "Charts",
-  //   subItems: [
-  //     { name: "Line Chart", path: "/line-chart", pro: false },
-  //     { name: "Bar Chart", path: "/bar-chart", pro: false },
-  //   ],
-  // },
-  // {
-  //   icon: <BoxCubeIcon />,
-  //   name: "UI Elements",
-  //   subItems: [
-  //     { name: "Alerts", path: "/alerts", pro: false },
-  //     { name: "Avatar", path: "/avatars", pro: false },
-  //     { name: "Badge", path: "/badge", pro: false },
-  //     { name: "Buttons", path: "/buttons", pro: false },
-  //     { name: "Images", path: "/images", pro: false },
-  //     { name: "Videos", path: "/videos", pro: false },
-  //   ],
-  // },
-  // {
-  //   icon: <PlugInIcon />,
-  //   name: "Authentication",
-  //   subItems: [
-  //     { name: "Sign In", path: "/signin", pro: false },
-  //     { name: "Sign Up", path: "/signup", pro: false },
-  //   ],
-  // },
-];
+const othersItems: NavItem[] = [];
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const pathname = usePathname();
 
   const renderMenuItems = (
     navItems: NavItem[],
-    menuType: "main" | "others"
+    menuType: "main" | "others",
   ) => (
     <ul className="flex flex-col gap-4">
       {navItems.map((nav, index) => (
@@ -124,7 +95,7 @@ const AppSidebar: React.FC = () => {
               onClick={() => handleSubmenuToggle(index, menuType)}
               className={`relative flex items-center w-full gap-3 px-3 py-2 font-medium rounded-lg text-sm group  ${
                 openSubmenu?.type === menuType && openSubmenu?.index === index
-                  ? "bg-[#ecf3ff] text-[#465fff] dark:bg-[#465fff]/[0.12] dark:text-[#7592ff]"
+                  ? "bg-[#ecf3ff] text-primary dark:bg-[#465fff]/[0.12] dark:text-primary"
                   : "text-gray-700 hover:bg-gray-100 group-hover:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300"
               } cursor-pointer ${
                 !isExpanded && !isHovered
@@ -135,7 +106,7 @@ const AppSidebar: React.FC = () => {
               <span
                 className={` ${
                   openSubmenu?.type === menuType && openSubmenu?.index === index
-                    ? "text-[#465fff] dark:text-[#7592ff]"
+                    ? "text-primary dark:text-primary"
                     : "text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
                 }`}
               >
@@ -161,14 +132,14 @@ const AppSidebar: React.FC = () => {
                 href={nav.path}
                 className={`relative flex items-center w-full gap-3 px-3 py-2 font-medium rounded-lg text-sm group ${
                   isActive(nav.path)
-                    ? "bg-[#ecf3ff] text-[#465fff] dark:bg-[#465fff]/[0.12] dark:text-[#7592ff]"
+                    ? "bg-[#ecf3ff] text-primary dark:bg-[#465fff]/[0.12] dark:text-primary"
                     : "text-gray-700 hover:bg-gray-100 group-hover:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300"
                 }`}
               >
                 <span
                   className={`${
                     isActive(nav.path)
-                      ? "text-[#465fff] dark:text-[#7592ff]"
+                      ? "text-primary dark:text-primary"
                       : "text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
                   }`}
                 >
@@ -200,7 +171,7 @@ const AppSidebar: React.FC = () => {
                       href={subItem.path}
                       className={`relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-theme-sm font-medium ${
                         isActive(subItem.path)
-                          ? "bg-[#ecf3ff] text-[#465fff] dark:bg-[#465fff]/[0.12] dark:text-[#7592ff]"
+                          ? "bg-[#ecf3ff] text-primary dark:bg-[#465fff]/[0.12] dark:text-[#7592ff]"
                           : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5"
                       }`}
                     >
@@ -245,7 +216,7 @@ const AppSidebar: React.FC = () => {
     index: number;
   } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
-    {}
+    {},
   );
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
@@ -306,7 +277,7 @@ const AppSidebar: React.FC = () => {
 
   return (
     <aside
-      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
+      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-secondary dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
         ${
           isExpanded || isMobileOpen
             ? "w-[290px]"
@@ -322,15 +293,26 @@ const AppSidebar: React.FC = () => {
       <div className="py-8 flex justify-center">
         <Link href="/admin/dashboard">
           {isExpanded || isHovered || isMobileOpen ? (
-            <Image
-              className="w-full"
-              src="/logo.svg"
-              alt="Logo"
-              width={150}
-              height={40}
-            />
+            <div className="flex items-center gap-2 order-1 md:order-none">
+              <Image
+                className="w-full rounded-full"
+                src="/logo_2.jpg"
+                alt="Logo"
+                width={48}
+                height={48}
+              />
+              <span className="text-lg font-semibold tracking-widest">
+                RICONSPORT
+              </span>
+            </div>
           ) : (
-            <Image src="/logo-mobile.svg" alt="Logo" width={32} height={32} />
+            <Image
+              src="/logo_2.jpg"
+              className="rounded-full"
+              alt="Logo"
+              width={48}
+              height={48}
+            />
           )}
         </Link>
       </div>

@@ -31,7 +31,7 @@ const PriceRangeSlider: React.FC<PriceRangeSliderProps> = ({
           max={max}
           step={100}
           sx={{
-            color: "#c92027",
+            color: "#c4ab64",
             height: 2,
             "& .MuiSlider-thumb": {
               width: 20,

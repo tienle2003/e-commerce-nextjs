@@ -16,8 +16,8 @@ export default {
         custom: "0px 0px 24px 0px rgba(0, 0, 0, 0.08)",
       },
       colors: {
-        primary: "#c92027",
-        secondary: "#f8f1e4",
+        primary: "#c4ab64",
+        secondary: "#eae7dc",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

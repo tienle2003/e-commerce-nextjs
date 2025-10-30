@@ -100,15 +100,21 @@ export const Header = () => {
   return (
     <div className="top-0 sticky w-full z-40">
       <div className="flex relative flex-col md:flex-row bg-secondary items-center justify-between py-3 px-4 md:px-8 lg:px-20 xl:px-36 gap-3 md:gap-0 z-50">
-        <Link href="/" className="flex-shrink-0">
+        <Link
+          href="/"
+          className="flex-shrink-0 flex items-center gap-2 order-1 md:order-none"
+        >
           <Image
-            src="/logo.svg"
+            src="/logo_2.jpg"
             alt="logo"
-            width={128}
-            height={32}
-            priority
-            className="w-32 md:w-52 h-auto"
+            width={48}
+            height={48}
+            sizes="(max-width: 768px) 64px, 300px"
+            className="rounded-full"
           />
+          <span className="text-lg font-semibold tracking-widest">
+            RICONSPORT
+          </span>
         </Link>
         <form
           className="relative w-full md:w-1/2 order-2 md:order-none mt-2 md:mt-0"
